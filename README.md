@@ -418,14 +418,50 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
 
 ---
 
-## Team
+## 👥 Group Members
 
-| Member | Role | GitHub |
-|--------|------|--------|
-| Muhammad Ibrahim | Schema & Normalization, Backend Setup | [@ibrahim-gulzar](https://github.com/ibrahim-gulzar) |
-| Muhammad Naqi Afaq | Core Transactions & ACID Logic | — |
-| M. Ibrahim Gulzar | Integrity, Locks & Triggers | [@ibrahim-gulzar](https://github.com/ibrahim-gulzar) |
-| Muhammad Haris Zafar | Views, Analytics & Frontend | [@mhariszaffar](https://github.com/mhariszaffar) |
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/mhariszaffar">
+        <img src="https://github.com/mhariszaffar.png" width="100px;" alt="Haris"/>
+        <br />
+        <b>Muhammad Haris Zafar</b>
+      </a>
+      <br />
+      <a href="https://github.com/mhariszaffar">github.com/mhariszaffar</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/abdullahk150">
+        <img src="https://github.com/abdullahk150.png" width="100px;" alt="Abdullah"/>
+        <br />
+        <b>Muhammad Abdullah Kaleem</b>
+      </a>
+      <br />
+      <a href="https://github.com/abdullahk150">github.com/abdullahk150</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/naqi005">
+        <img src="https://github.com/naqi005.png" width="100px;" alt="Naqi"/>
+        <br />
+        <b>Muhammad Naqi Afaq</b>
+      </a>
+      <br />
+      <a href="https://github.com/naqi005">github.com/naqi005</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ibrahim-gulzar">
+        <img src="https://github.com/ibrahim-gulzar.png" width="100px;" alt="Ibrahim"/>
+        <br />
+        <b>Muhammad Ibrahim Gulzar</b>
+      </a>
+      <br />
+      <a href="https://github.com/ibrahim-gulzar">github.com/ibrahim-gulzar</a>
+    </td>
+  </tr>
+</table>
+
+---
 
 ---
 
