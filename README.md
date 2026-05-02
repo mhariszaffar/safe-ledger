@@ -432,13 +432,13 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
       <a href="https://github.com/mhariszaffar">github.com/mhariszaffar</a>
     </td>
     <td align="center">
-      <a href="https://github.com/abdullahk150">
-        <img src="https://github.com/abdullahk150.png" width="100px;" alt="Abdullah"/>
+      <a href="https://github.com/ibrahimcys">
+        <img src="https://github.com/ibrahimcys.png" width="100px;" alt="Abdullah"/>
         <br />
         <b>Muhammad Abdullah Kaleem</b>
       </a>
       <br />
-      <a href="https://github.com/abdullahk150">github.com/abdullahk150</a>
+      <a href="https://github.com/ibrahimcys">github.com/abdullahk150</a>
     </td>
     <td align="center">
       <a href="https://github.com/naqi005">
