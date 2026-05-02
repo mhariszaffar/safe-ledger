@@ -419,7 +419,6 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
 ---
 
 ## 👥 Group Members
-
 <table>
   <tr>
     <td align="center">
@@ -433,12 +432,12 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
     </td>
     <td align="center">
       <a href="https://github.com/ibrahimcys">
-        <img src="https://github.com/ibrahimcys.png" width="100px;" alt="Abdullah"/>
+        <img src="https://github.com/ibrahimcys.png" width="100px;" alt="Ibrahim"/>
         <br />
-        <b>Muhammad Abdullah Kaleem</b>
+        <b>Muhammad Ibrahim</b>
       </a>
       <br />
-      <a href="https://github.com/ibrahimcys">github.com/abdullahk150</a>
+      <a href="https://github.com/ibrahimcys">github.com/ibrahimcys</a>
     </td>
     <td align="center">
       <a href="https://github.com/naqi005">
@@ -451,7 +450,7 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
     </td>
     <td align="center">
       <a href="https://github.com/ibrahim-gulzar">
-        <img src="https://github.com/ibrahim-gulzar.png" width="100px;" alt="Ibrahim"/>
+        <img src="https://github.com/ibrahim-gulzar.png" width="100px;" alt="Gulzar"/>
         <br />
         <b>Muhammad Ibrahim Gulzar</b>
       </a>
@@ -460,9 +459,6 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
     </td>
   </tr>
 </table>
-
----
-
 ---
 
 ## Academic Information
