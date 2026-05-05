@@ -419,6 +419,7 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
 ---
 
 ## 👥 Group Members
+
 <table>
   <tr>
     <td align="center">
@@ -449,18 +450,16 @@ haris-final         → KAN-44, KAN-46  (API testing, documentation)
       <a href="https://github.com/naqi005">github.com/naqi005</a>
     </td>
     <td align="center">
-      <a href="https://github.com/ibrahim-gulzar">
-        <img src="https://github.com/ibrahim-gulzar.png" width="100px;" alt="Gulzar"/>
+      <a href="https://github.com/ibrahim-gulzar-11">
+        <img src="https://github.com/ibrahim-gulzar-11.png" width="100px;" alt="Gulzar"/>
         <br />
         <b>Muhammad Ibrahim Gulzar</b>
       </a>
       <br />
-      <a href="https://github.com/ibrahim-gulzar">github.com/ibrahim-gulzar</a>
+      <a href="https://github.com/ibrahim-gulzar-11">github.com/ibrahim-gulzar-11</a>
     </td>
   </tr>
 </table>
----
-
 ## Academic Information
 
 - **Course**: CS-232 — Database Management Systems
