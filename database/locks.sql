@@ -1,0 +1,107 @@
+-- ============================================================
+--  SafeLedger — Row-Level Locking Strategy
+--  Owner: Ibrahim Gulzar (Integrity, Locks, Triggers)
+-- ============================================================
+--  This file documents and demonstrates the FOR UPDATE locking
+--  patterns used across SafeLedger's stored procedures to
+--  prevent race conditions and deadlocks.
+-- ============================================================
+
+-- ─────────────────────────────────────────────────────────────
+--  WHY LOCKS ARE NEEDED
+--
+--  Without locking, two concurrent transfer requests on the
+--  same wallet can both read the same balance, both decide
+--  it is sufficient, and both deduct — resulting in a negative
+--  balance. This is called a TOCTOU (time-of-check /
+--  time-of-use) race condition.
+--
+--  Example of the unsafe pattern (DO NOT use):
+--
+--    -- Session A reads balance: 100
+--    SELECT balance FROM wallets WHERE wallet_id = 'X';
+--    -- Session B reads balance: 100 (same value, not yet updated)
+--    SELECT balance FROM wallets WHERE wallet_id = 'X';
+--    -- Both pass the check: 100 >= 80
+--    -- Both deduct 80 → balance = -60  ← WRONG
+-- ─────────────────────────────────────────────────────────────
+
+-- ─────────────────────────────────────────────────────────────
+--  THE SAFE PATTERN — SELECT ... FOR UPDATE
+--
+--  FOR UPDATE places a row-level exclusive lock. Any other
+--  transaction that tries to read or modify the same row
+--  with FOR UPDATE must WAIT until the first one commits.
+--
+--    -- Session A locks the row:
+--    SELECT balance FROM wallets WHERE wallet_id = 'X' FOR UPDATE;
+--    -- Session B tries the same → WAITS
+--    -- Session A deducts, commits → balance = 20
+--    -- Session B now reads balance: 20 < 80 → REJECTED
+-- ─────────────────────────────────────────────────────────────
+
+-- Demo: Single-wallet lock (used in process_deposit, process_withdrawal)
+-- ─────────────────────────────────────────────────────────────
+-- BEGIN;
+--   SELECT currency_type, status, balance
+--     FROM wallets
+--    WHERE wallet_id = 'target-wallet-uuid'
+--   FOR UPDATE;
+--   -- Perform validation and balance update here
+-- COMMIT;
+
+-- ─────────────────────────────────────────────────────────────
+--  DEADLOCK PREVENTION — Consistent Lock Ordering
+--
+--  When locking TWO wallets (transfer, exchange), a deadlock
+--  can occur if two sessions lock wallets in opposite orders:
+--
+--    Session A locks Wallet-1, waits for Wallet-2
+--    Session B locks Wallet-2, waits for Wallet-1
+--    → Neither can proceed → deadlock
+--
+--  Solution: always lock wallets in UUID alphabetical order,
+--  regardless of which is the sender or receiver.
+--  UUID strings compare lexicographically in PostgreSQL.
+-- ─────────────────────────────────────────────────────────────
+
+-- Demo: Deadlock-safe two-wallet lock pattern
+-- ─────────────────────────────────────────────────────────────
+-- DECLARE
+--     p_wallet_a UUID := 'aaa...';
+--     p_wallet_b UUID := 'bbb...';
+-- BEGIN
+--     IF p_wallet_a < p_wallet_b THEN
+--         SELECT ... FROM wallets WHERE wallet_id = p_wallet_a FOR UPDATE;
+--         SELECT ... FROM wallets WHERE wallet_id = p_wallet_b FOR UPDATE;
+--     ELSE
+--         SELECT ... FROM wallets WHERE wallet_id = p_wallet_b FOR UPDATE;
+--         SELECT ... FROM wallets WHERE wallet_id = p_wallet_a FOR UPDATE;
+--     END IF;
+-- END;
+
+-- ─────────────────────────────────────────────────────────────
+--  LOCK TYPES USED IN THIS PROJECT
+--
+--  FOR UPDATE     — used everywhere. Exclusive lock. Blocks
+--                   other SELECT FOR UPDATE and all DML on
+--                   the locked rows until COMMIT/ROLLBACK.
+--
+--  FOR SHARE      — NOT used. Would allow concurrent reads
+--                   but block writes. Too weak for financial ops.
+--
+--  NOWAIT         — NOT used. Would raise error instead of
+--                   waiting. We prefer waiting to failing.
+--
+--  SKIP LOCKED    — NOT used. Would silently skip locked rows.
+--                   Unacceptable for financial operations.
+-- ─────────────────────────────────────────────────────────────
+
+-- ─────────────────────────────────────────────────────────────
+--  To observe locks in a running database:
+--
+--  SELECT pid, relation::regclass, mode, granted, query
+--    FROM pg_locks
+--    JOIN pg_stat_activity USING (pid)
+--   WHERE relation = 'wallets'::regclass;
+-- ─────────────────────────────────────────────────────────────
