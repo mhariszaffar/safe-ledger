@@ -410,3 +410,5 @@ VALUES (
     'admin'
 )
 ON CONFLICT (email) DO NOTHING;
+
+-- 
