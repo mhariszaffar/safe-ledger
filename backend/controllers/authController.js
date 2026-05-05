@@ -174,3 +174,4 @@ const loginRules = [
 ]
 
 module.exports = { register, login, me, logout, logoutAll, registerRules, loginRules, formatUser, signToken, hashToken }
+//Updated
