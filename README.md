@@ -1,6 +1,3 @@
-this is my updated jira and task assignment, make changes in the readme only where required where jira tasks are swapped and for committs too keep everything else same
-
-
 # 🏦 Safe Ledger — P2P Financial Transaction System
 
 ![Project](https://img.shields.io/badge/Project-DBMS%20CS--232-blue)
